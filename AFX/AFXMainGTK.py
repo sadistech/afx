@@ -8,6 +8,8 @@ import sys
 from AFX.GUI.AFXMainWindow import *
 from AFX.GUI.AFXLoadingWindow import *
 
+import AFX.AFXConfig as AFXConfig
+
 class App:
 	def destroy(self, widget, data=None):
 		self.main_window.destroy(widget)
