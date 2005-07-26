@@ -5,7 +5,7 @@ from AFXApplication import *
 from AFXFileApplication import *
 
 
-from AFXConf import *
+from AFXConfig import *
 from AFXRuntime import *
 from AFXUtility import *
 from AFXWindow import *

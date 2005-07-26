@@ -1,12 +1,11 @@
-default_conf_path = "/home/spike/AFX/conf/afx.conf"
+import sys
+from core.AFXConf import *
 
-pid_file = "/home/spike/AFX/AFXModule.pid"
-bin_path = "/home/spike/AFX/bin"
+conf_path = "afx.conf"
 
-exec_bin_name = "afxexec"
-kill_bin_name = "afxkill"
+if (len(sys.argv) == 2):
+	conf_path = sys.argv[1]
 
-def load_conf():
-		#insert file-reading code here...
-		#read the conf file, or load defaults?
-		print "Loaded conf...\n"
+conf = AFXConf()
+conf.init_from_file(conf_path)
+
