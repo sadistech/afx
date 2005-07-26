@@ -47,7 +47,12 @@ class AFXConf:
 		lines = f.readlines()
 		for line in lines:
 			if (line[0] != "#"): 				# if it's not a comment...
+				
+				if (line[-1] == "\n"):			# chomp off the trailing \n
+					line = line[:-1]
+					
 				if (re.match(r"\w", line)): 	# if the line's not blank
 					print "processed: %s" % line
-					m = re.match(r"^\s*([\S]+)\s+(.+)\n$", line)
-					self.write(m.group(1), m.group(2))
+					m = re.match(r"^\s*([\S]+)\s+(.+)$", line)
+					if (m != None):				# line matched...
+						self.write(m.group(1), m.group(2))
