@@ -9,7 +9,7 @@ class module(AFX.AFXFileApplication):
 		self.exec_path = "/usr/games/bin/xmame"
 		self.exec_opts = "-jdev /dev/input/js0 -jt 1 -as -s 2 -dp alsa -smp alsa"
 		self.description = "Play a huge array of classic arcade games!"
-		self.dir_path = "/home/spike/Mame Roms S-Z"
+		self.dir_path = "/roms/mame_roms"
 
 		self.init_window()
 
