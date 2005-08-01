@@ -98,12 +98,16 @@ class AFXView(gtk.DrawingArea):
 		gb = gtk.gdk.Pixmap(self.window, w, h, -1) # graphic buffer
 		gc = gb.new_gc(line_width=2, join_style=gtk.gdk.JOIN_ROUND)
 
-		print "paint: self.images.count: %d" % len(self.images)
+		#print "paint: self.images.count: %d" % len(self.images)
 
 		if (len(self.images) == 0):
 			return
 	
-		# draw the black bar...
+		#first, initialize the graphics by filling the buffer with black
+		gc.set_rgb_fg_color(gtk.gdk.Color(0, 0, 0))
+		gb.draw_rectangle(gc, gtk.TRUE, 0, 0, w, h)
+	
+		# draw the dark gray bar...
 		gc.set_rgb_fg_color(gtk.gdk.Color(25600, 25600, 25600))
 		gb.draw_rectangle(gc, gtk.TRUE, 0, (h / 2) - (384 / 2), w, 384)
 		
