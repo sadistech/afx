@@ -9,6 +9,7 @@ class module(AFX.AFXFileApplication):
 		self.exec_path = "/usr/games/bin/fceu-sdl"
 		self.description = "Play games from the original Nintendo Entertainment System."
 		self.dir_path = "/roms/nes_roms"
+		self.icon = "nes.png"
 
 		self.init_window()
 

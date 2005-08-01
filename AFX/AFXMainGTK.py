@@ -7,6 +7,7 @@ import gtk
 import sys
 from AFX.GUI.AFXMainWindow import *
 from AFX.GUI.AFXLoadingWindow import *
+from AFX.GUI.AFXView import *
 
 import AFX.AFXConfig as AFXConfig
 
@@ -34,20 +35,20 @@ class App:
 		
 		for mod in Modules.module_list:
 			loading_window.update_status("Loading: %s" % mod.short_name)
-			b = gtk.Button(mod.short_name)
-			self.main_window.btn_box.pack_start(b, gtk.FALSE, gtk.FALSE, 0)
-			b.connect("clicked", mod.run, "")
-			b.connect("focus-in-event", self.update_description, mod.description)
-			b.connect("focus-in-event", self.update_full_name, mod.long_name)
-			b.show()
 
 		loading_window.destroy(None)
+		self.main_window.module_view = AFXView(Modules.module_list)
+		self.main_window.add(self.main_window.module_view)
+		self.main_window.module_view.show()
 
+		
 	def update_description(self, widget, event, desc):
+		pass
 		self.main_window.description.set_markup("<i>%s</i>" % desc)
 	
 	def update_full_name(self, widget, event, full_name):
-		self.main_window.full_name.set_markup("<span size='xx-large' weight='bold' foreground='white' background='black'>%s</span>" % full_name)
+		pass
+		#self.main_window.full_name.set_markup("<span size='xx-large' weight='bold' foreground='white' background='black'>%s</span>" % full_name)
 
 	def main(self):
 		gtk.main()

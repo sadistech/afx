@@ -9,7 +9,7 @@ class module(AFX.AFXModule):
 		self.short_name = "Exit"
 		self.description = "Quits AFX and gets you out of this hell..."
 
-		
+		self.icon = "boob.png"	
 
 	def run(self, widget=None, data=None):
 		sys.exit()

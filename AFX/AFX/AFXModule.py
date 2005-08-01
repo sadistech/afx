@@ -6,7 +6,8 @@ class AFXModule:
 	long_name 		= ""
 	short_name 		= ""
 	description 	= ""
-	
+	icon			= ""
+
 	def __init__(self):
 		pass
 	

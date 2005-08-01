@@ -8,6 +8,7 @@ class module(AFX.AFXFileApplication):
 		self.exec_path = "/usr/games/bin/snes9x"
 		self.description = "Play games from the Super Nintendo Entertainment System."
 		self.dir_path = "/roms/snes_roms"
+		self.icon = "snes.png"
 		
 		self.init_window()
 
