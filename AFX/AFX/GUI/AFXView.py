@@ -8,6 +8,10 @@ class AFXView(gtk.DrawingArea):
 	selection = 0 # the currently selected item
 
 	def __init__(self, module_list):
+		"""
+		initializes the AFXView with a module_list (from the Modules module)
+		"""
+
 		gtk.DrawingArea.__init__(self)
 		self.images = []
 		self.module_list = module_list
@@ -26,6 +30,9 @@ class AFXView(gtk.DrawingArea):
 		self.connect("key_press_event", self.keydown)
 
 	def keydown(self, widget, event):
+		"""
+		used for capturing keyboard events
+		"""
 		if (event.keyval == 65361): # left
 			self.prev()
 		elif (event.keyval == 65363): # right
@@ -36,6 +43,9 @@ class AFXView(gtk.DrawingArea):
 			print "debug: keyval=%d" % event.keyval
 
 	def next(self):
+		"""
+		increments the selection and redraws the view
+		"""
 		self.selection += 1
 		
 		if (self.selection == len(self.images)):
@@ -44,6 +54,9 @@ class AFXView(gtk.DrawingArea):
 		self.paint(self, None)
 
 	def prev(self):
+		"""
+		decrements the selection and redraws the view
+		"""
 		self.selection -= 1
 		
 		if (self.selection < 0):
@@ -52,21 +65,33 @@ class AFXView(gtk.DrawingArea):
 		self.paint(self, None)
 
 	def run_selected(self):
+		"""
+		executes the currently selected module
+		"""
 		self.get_module(self.selection).run()
 		
 	def get_module(self, index):
+		"""
+		returns the module with index
+		"""
 		if (index < 0):
 			return self.module_list[-(index % len(self.module_list))]
 		else:
 			return self.module_list[index % len(self.module_list)]
 
 	def get_image(self, index):
+		"""
+		returns the image with index
+		"""
 		if (index < 0):
 			return self.images[-(index % len(self.images))]
 		else:
 			return self.images[index % len(self.images)]
 
 	def paint(self, widget, event):
+		"""
+		draws the view with all icons and whatnot
+		"""
 		#gc = self.window.new_gc()
 		(w, h) = self.window.get_size()
 
