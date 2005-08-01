@@ -74,19 +74,19 @@ class AFXView(gtk.DrawingArea):
 		"""
 		returns the module with index
 		"""
-		if (index < 0):
-			return self.module_list[-(index % len(self.module_list))]
-		else:
-			return self.module_list[index % len(self.module_list)]
+		#if (index < 0):
+		#	return self.module_list[-(index % len(self.module_list))]
+		#else:
+		return self.module_list[index % len(self.module_list)]
 
 	def get_image(self, index):
 		"""
 		returns the image with index
 		"""
-		if (index < 0):
-			return self.images[-(index % len(self.images))]
-		else:
-			return self.images[index % len(self.images)]
+		#if (index < 0):
+		#return self.images[-(index % len(self.images))]
+		#else:
+		return self.images[index % len(self.images)]
 
 	def paint(self, widget, event):
 		"""
