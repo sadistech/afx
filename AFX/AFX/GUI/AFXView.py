@@ -165,14 +165,16 @@ class AFXView(gtk.DrawingArea):
 		# draw the description!
 		l = pango.Layout(self.get_pango_context())
 		l.set_markup("<span size='24000' style='italic'>%s</span>" % self.get_module(self.selection).description)
-
+		l.set_wrap(pango.WRAP_WORD) 	# set it to wrap on word boundries
+		l.set_width(w * 500) 				# set the wrap-width to half the window's width
+		
 		# set the foreground colour to light gray...
 		gc.set_rgb_fg_color(gtk.gdk.Color(45000, 45000, 45000))
 
 		(lw, lh) = l.get_pixel_size() #description width and height
 
 		#draw the damned description!
-		gb.draw_layout(gc, (w / 2 - lw / 2), h - 72, l)
+		gb.draw_layout(gc, (w / 2 - lw / 2), h - 128, l)
 		
 
 		#flip the offscreen buffer onto the drawable! yay! flickerless drawing!
