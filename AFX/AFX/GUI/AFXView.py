@@ -150,18 +150,30 @@ class AFXView(gtk.DrawingArea):
 		self.get_image(self.selection - 3).get_pixbuf().scale(pb, 0, 0, 64, 64, 0, 0, .25, .25, gtk.gdk.INTERP_BILINEAR)
 		gb.draw_pixbuf(gc, pb, 0, 0, (w / 2) - 128 - 128 - 96 - 64 - 64, (h / 2) - 32, 64, 64)
 		
+		# draw the selection's long_name
 		l = pango.Layout(self.get_pango_context())
 		l.set_markup("<span size='36000' weight='ultrabold'>%s</span>" % self.get_module(self.selection).long_name)
-		#l.set_text("Nintendo Entertainment System")
-		#l.set_alignment(pango.ALIGN_CENTER)
-		#al = pango.AttrList()
-		#al.insert(pango.AttrSize(72000, 0, len(l.get_text())))
-		#l.set_attributes(al)
-		#l.context_changed()
 		
+		# set the foreground colour to white...
 		gc.set_rgb_fg_color(gtk.gdk.Color(65535, 65535, 65535))
-		(lw, lh) = l.get_pixel_size()
-	
-		gb.draw_layout(gc, (w / 2 - lw / 2), 72, l)
 		
+		(lw, lh) = l.get_pixel_size() #layout width and height
+	
+		# draw the long_name
+		gb.draw_layout(gc, (w / 2 - lw / 2), 72, l)
+
+		# draw the description!
+		l = pango.Layout(self.get_pango_context())
+		l.set_markup("<span size='24000' style='italic'>%s</span>" % self.get_module(self.selection).description)
+
+		# set the foreground colour to light gray...
+		gc.set_rgb_fg_color(gtk.gdk.Color(45000, 45000, 45000))
+
+		(lw, lh) = l.get_pixel_size() #description width and height
+
+		#draw the damned description!
+		gb.draw_layout(gc, (w / 2 - lw / 2), h - 72, l)
+		
+
+		#flip the offscreen buffer onto the drawable! yay! flickerless drawing!
 		self.window.draw_drawable(self.window.new_gc(), gb, 0, 0, 0, 0, w, h)
