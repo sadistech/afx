@@ -91,6 +91,7 @@ class AFXView(gtk.DrawingArea):
 	def paint(self, widget, event):
 		"""
 		draws the view with all icons and whatnot
+		primary icon is 256px x 256px sandwiched between 2 secondary icons @ 128px square, then sandwiched between 4 (2 on each side) icons @ 64px. All icons are drawn 32px apart.
 		"""
 		#gc = self.window.new_gc()
 		(w, h) = self.window.get_size()

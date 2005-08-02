@@ -32,16 +32,21 @@ class App:
 	
 		print "\nLoading modules..."
 		import Modules
-		
-		for mod in Modules.module_list:
-			loading_window.update_status("Loading: %s" % mod.short_name)
 
-		loading_window.destroy(None)
+		Modules.loading_window = loading_window
+		Modules.load_modules()
+		
+		#for mod in Modules.module_list:
+		#	loading_window.update_status("Loading: %s" % mod.short_name)
+
+		loading_window.update_status("Initializing main view...")
+
 		self.main_window.module_view = AFXView(Modules.module_list)
 		self.main_window.add(self.main_window.module_view)
 		self.main_window.module_view.show()
 
-		
+		loading_window.destroy(None)
+	
 	def update_description(self, widget, event, desc):
 		pass
 		self.main_window.description.set_markup("<i>%s</i>" % desc)
