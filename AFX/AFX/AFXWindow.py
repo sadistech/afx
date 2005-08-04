@@ -2,6 +2,10 @@ import pygtk
 import gtk
 
 class AFXWindow(gtk.Window):
+	"""
+	a gtk.Window that's initialized for AFX
+	it's full screen and has specific behavior and appearance.
+	"""
 	main_box = None
 	
 	def __init__(self, type=gtk.WINDOW_TOPLEVEL):

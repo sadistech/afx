@@ -1,3 +1,9 @@
+"""
+when importing the module AFX, it imports all this crap, by default.
+
+this needs to be checked out and maybe simplified. maybe. probably.
+"""
+
 # module stuff
 from AFXModule import *
 from AFXWindowedModule import *

@@ -1,3 +1,13 @@
+"""
+AFXConfig
+
+Module for managing the main configuration file
+
+Instantiates an AFXConf
+Checks the commandline for the main application (sys.argv) for a conf file argument (the first argument)
+Uses sys.argv[1] if it's available, otherwise reads afx.conf
+"""
+
 import sys
 from core.AFXConf import *
 

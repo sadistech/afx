@@ -1,9 +1,3 @@
-## AFXFileApplication
-##
-## an AFXApplication that passes a file to the commandline
-## also creates a filebrowser for accessing the files to pass to
-## the program...
-
 from AFXApplication import *
 from AFXWindowedModule import *
 import AFXRuntime
@@ -15,7 +9,19 @@ import gtk
 
 
 class AFXFileApplication(AFXApplication, AFXWindowedModule):
-	dir_path = ""		# path to the starting directory for the filebrowser
+	"""
+	AFXFileApplication
+	
+	an AFXApplication that passes a file to the commandline.
+	Also creates a filebrowser for accessing the files to pass to
+		the program...
+
+	TODO:
+		Add exit button to window...
+		add browsing capability (so you can sort files into folders)
+		add themability (colors for the listbox, etc)
+	"""
+dir_path = ""		# path to the starting directory for the filebrowser
 	dir_list = list()	# cached list of the directory's contents
 	filename = ""		# the filename of the file to be launched...
 	run = AFXWindowedModule.run

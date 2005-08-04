@@ -1,4 +1,14 @@
 def run_module(module):
+	"""
+	function for running a module that requires an application.
+
+	this uses afx_bin/afxexec to launch a new process.
+	see docs on afxexec on how it works.
+	
+	TODO:
+		the architecture of this whole thing needs to be rethought/ recoded.
+		perhaps it should be implemented into AFXApplication.
+	"""
 	print "run_module(%s)\n" % module.short_name
 
 	import os
