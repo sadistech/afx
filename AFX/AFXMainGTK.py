@@ -20,30 +20,30 @@ class App:
 	def __init__(self):
 		self.main_window = AFXMainWindow(gtk.WINDOW_TOPLEVEL)
 		
-		self.load_modules() # load some modules, yay!
+		self.load_plugins() # load some plugins, yay!
 		
 		self.main_window.show()
 
-	def load_modules(self):
+	def load_plugins(self):
 		loading_window = AFXLoadingWindow()
 
 		loading_window.show()
-		loading_window.update_status("Loading modules...")
+		loading_window.update_status("Loading plugins...")
 	
-		print "\nLoading modules..."
+		print "\nLoading plugins..."
 		import Modules
 
 		Modules.loading_window = loading_window
-		Modules.load_modules()
+		Modules.load_plugins()
 		
-		#for mod in Modules.module_list:
+		#for mod in Modules.plugin_list:
 		#	loading_window.update_status("Loading: %s" % mod.short_name)
 
 		loading_window.update_status("Initializing main view...")
 
-		self.main_window.module_view = AFXView(Modules.module_list)
-		self.main_window.add(self.main_window.module_view)
-		self.main_window.module_view.show()
+		self.main_window.plugin_view = AFXView(Modules.plugin_list)
+		self.main_window.add(self.main_window.plugin_view)
+		self.main_window.plugin_view.show()
 
 		loading_window.destroy(None)
 	

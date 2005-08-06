@@ -1,22 +1,22 @@
 import pygtk
 import gtk
-from AFXModule import *
+from AFXPlugin import *
 from AFXWindow import *
 
-class AFXWindowedModule(AFXModule):
+class AFXWindowedPlugin(AFXPlugin):
 	"""
-	AFXWindowedModule
+	AFXWindowedPlugin
 
-	A module that contains a graphical interface
+	A plugin that contains a graphical interface
 		it has a window for doing things with it.
-	Most modules will be WindowedModules.
+	Most plugins will be WindowedPlugin.
 	"""
 	
 	window = None
 	
 	def init_window(self):
 		"""
-		initialize the window of the module.
+		initialize the window of the plugin.
 		"""
 		self.window = AFXWindow()
 

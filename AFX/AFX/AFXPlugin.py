@@ -1,17 +1,14 @@
-class AFXModule:
+class AFXPlugin:
 	"""
 	AFXModule
 	
-	Base class for all AFXModules
-
-	TODO:
-		modules need to be renamed to 'plugins' to avoid syntactical confusion between AFX and python...
+	Base class for all AFXPlugins
 	"""
 
 	long_name 		= ""
 	short_name 		= ""
 	description 	= ""
-	icon			= ""
+	icon			= "" #icon name. fetched by AFX from the icons directory
 
 	def __init__(self):
 		pass

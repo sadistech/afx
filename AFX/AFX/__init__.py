@@ -5,8 +5,8 @@ this needs to be checked out and maybe simplified. maybe. probably.
 """
 
 # module stuff
-from AFXModule import *
-from AFXWindowedModule import *
+from AFXPlugin import *
+from AFXWindowedPlugin import *
 from AFXApplication import *
 from AFXFileApplication import *
 

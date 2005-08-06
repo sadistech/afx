@@ -1,9 +1,9 @@
 import AFX
 import sys
 
-class module(AFX.AFXModule):
+class module(AFX.AFXPlugin):
 	def __init__(self):
-		AFX.AFXModule.__init__(self)
+		AFX.AFXPlugin.__init__(self)
 
 		self.long_name = "Exit AFX"
 		self.short_name = "Exit"

@@ -1,6 +1,6 @@
-from AFXModule import *
+from AFXPlugin import *
 
-class AFXApplication(AFXModule):
+class AFXApplication(AFXPlugin):
 	"""
 	AFXApplication
 	

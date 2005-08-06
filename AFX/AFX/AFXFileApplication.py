@@ -1,5 +1,5 @@
 from AFXApplication import *
-from AFXWindowedModule import *
+from AFXWindowedPlugin import *
 import AFXRuntime
 import os
 import AFX
@@ -8,7 +8,7 @@ import pygtk
 import gtk
 
 
-class AFXFileApplication(AFXApplication, AFXWindowedModule):
+class AFXFileApplication(AFXApplication, AFXWindowedPlugin):
 	"""
 	AFXFileApplication
 	
@@ -21,10 +21,10 @@ class AFXFileApplication(AFXApplication, AFXWindowedModule):
 		add browsing capability (so you can sort files into folders)
 		add themability (colors for the listbox, etc)
 	"""
-dir_path = ""		# path to the starting directory for the filebrowser
+	dir_path = ""		# path to the starting directory for the filebrowser
 	dir_list = list()	# cached list of the directory's contents
 	filename = ""		# the filename of the file to be launched...
-	run = AFXWindowedModule.run
+	run = AFXWindowedPlugin.run
 	
 	def init_window(self):
 		self.window = AFX.AFXWindow(gtk.WINDOW_TOPLEVEL)
@@ -86,7 +86,7 @@ dir_path = ""		# path to the starting directory for the filebrowser
 
 		print "rom: %s" % self.filename
 
-		AFXRuntime.run_module(self)
+		AFXRuntime.run_plugin(self)
 
 	def get_exec(self):
 		return "%s %s \"%s/%s\"" % (self.exec_path, self.exec_opts, self.dir_path, self.filename)
