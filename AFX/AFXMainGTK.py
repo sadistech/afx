@@ -31,17 +31,17 @@ class App:
 		loading_window.update_status("Loading plugins...")
 	
 		print "\nLoading plugins..."
-		import Modules
+		import Plugins
 
-		Modules.loading_window = loading_window
-		Modules.load_plugins()
+		Plugins.loading_window = loading_window
+		Plugins.load_plugins()
 		
 		#for mod in Modules.plugin_list:
 		#	loading_window.update_status("Loading: %s" % mod.short_name)
 
 		loading_window.update_status("Initializing main view...")
 
-		self.main_window.plugin_view = AFXView(Modules.plugin_list)
+		self.main_window.plugin_view = AFXView(Plugins.plugin_list)
 		self.main_window.add(self.main_window.plugin_view)
 		self.main_window.plugin_view.show()
 
