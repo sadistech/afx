@@ -2,6 +2,20 @@
 
 print "Welcome to AFX\n\n"
 
+# first thing's first... let's parse the commandline options...
+import AFX.core.AFXCommandline as CLI
+CLI.parse_commands()
+
+# then, let's read the conf...
+import AFX.AFXConfig as AFXConfig
+# if the commandline overrided the conf file, let's read that one.
+if (CLI.__dict__.has_key("conf_path")):
+	AFXConfig.conf_path = CLI.conf_path
+
+AFXConfig.init()
+
+# now, let's start initializing the program...
+
 import pygtk
 import gtk
 import sys
@@ -9,7 +23,6 @@ from AFX.GUI.AFXMainWindow import *
 from AFX.GUI.AFXLoadingWindow import *
 from AFX.GUI.AFXView import *
 
-import AFX.AFXConfig as AFXConfig
 
 class App:
 	def destroy(self, widget, data=None):
