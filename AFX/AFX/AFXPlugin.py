@@ -1,6 +1,6 @@
 class AFXPlugin:
 	"""
-	AFXModule
+	AFXPlugin
 	
 	Base class for all AFXPlugins
 	"""
