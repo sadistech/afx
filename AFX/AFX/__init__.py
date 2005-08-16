@@ -1,5 +1,5 @@
 """
-when importing the module AFX, it imports all this crap, by default.
+Imports all of the required AFX functions for the core functionality
 
 this needs to be checked out and maybe simplified. maybe. probably.
 """
@@ -11,7 +11,7 @@ from AFXApplication import *
 from AFXFileApplication import *
 
 
-from AFXConfig import *
+#from AFXConfig import *
 from AFXRuntime import *
 from AFXUtility import *
-from AFXWindow import *
+#from AFXWindow import *

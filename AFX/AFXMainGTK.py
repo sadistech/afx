@@ -12,6 +12,7 @@ import AFX.AFXConfig as AFXConfig
 if (CLI.__dict__.has_key("conf_path")):
 	AFXConfig.conf_path = CLI.conf_path
 
+# read the conf file
 AFXConfig.init()
 
 # now, let's start initializing the program...
