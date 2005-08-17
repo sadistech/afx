@@ -1,8 +1,8 @@
 from AFXPlugin import *
 
-class AFXApplication(AFXPlugin):
+class AFXAppPlugin(AFXPlugin):
 	"""
-	AFXApplication
+	AFXAppPlugin
 	
 	A plugin that executes a separate process 
 		which is managed by the AFXRuntime
@@ -19,16 +19,17 @@ class AFXApplication(AFXPlugin):
 		"""
 		return "%s %s" % (self.exec_path, self.exec_opts)
 
-	def run_start(self):
+	def launch_app(self):
 		"""
-		event for when this AFXApplication is about to run
-		called right before execution
+		runs this plugin.
 		"""
-		pass
 
-	def run_end(self):
-		"""
-		event for when this AFXApplication is done running
-		called right after execution finishes (when the process returns)
-		"""
-		pass
+		import os 					# for popen()
+		from AFXConfig import conf 	# for the afxexec bin_name
+
+		# build the os.popen() command string.
+		# 	the process is launched by the exec_bin (afxexec)
+		#	see afxexec for usage details
+		my_exec = "%s/%s %s" % (conf.read('bin_path'), conf.read('exec_bin_name'), self.get_exec())
+
+		os.popen(my_exec)

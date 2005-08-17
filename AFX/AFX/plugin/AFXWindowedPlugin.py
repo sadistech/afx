@@ -2,8 +2,9 @@ import pygtk
 import gtk
 from AFXPlugin import *
 from AFXWindow import *
+from AFXVisualPlugin import *
 
-class AFXWindowedPlugin(AFXPlugin):
+class AFXWindowedPlugin(AFXVisualPlugin):
 	"""
 	AFXWindowedPlugin
 

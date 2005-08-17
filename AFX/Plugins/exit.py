@@ -1,9 +1,9 @@
 import AFX
 import sys
 
-class module(AFX.AFXPlugin):
+class module(AFX.AFXVisualPlugin):
 	def __init__(self):
-		AFX.AFXPlugin.__init__(self)
+		AFX.AFXVisualPlugin.__init__(self)
 
 		self.long_name = "Exit AFX"
 		self.short_name = "Exit"
@@ -11,8 +11,6 @@ class module(AFX.AFXPlugin):
 
 		self.icon = "exit.png"	
 
-	def run(self, widget=None, data=None):
+	def call(self, widget=None, data=None):
 		sys.exit()
 
-	def run_end(self):
-		print "%s finished!" % self.short_name
