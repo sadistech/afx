@@ -1,7 +1,7 @@
 import pygtk
 import gtk
 from AFXPlugin import *
-from AFXWindow import *
+from AFX.AFXWindow import *
 from AFXVisualPlugin import *
 
 class AFXWindowedPlugin(AFXVisualPlugin):
@@ -21,6 +21,10 @@ class AFXWindowedPlugin(AFXVisualPlugin):
 		"""
 		self.window = AFXWindow()
 
-	def run(self, widget=None, data=None):
-		print "%s is gonna run!" % self.short_name
+	def call(self, widget=None, data=None):
+		"""
+		override's AFXVisualPlugin's call()
+		shows the window.
+		"""
+		print "showing %s's window!" % self.short_name
 		self.window.show()

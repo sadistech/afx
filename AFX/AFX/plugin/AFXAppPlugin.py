@@ -1,6 +1,6 @@
-from AFXPlugin import *
+from AFXVisualPlugin import *
 
-class AFXAppPlugin(AFXPlugin):
+class AFXAppPlugin(AFXVisualPlugin):
 	"""
 	AFXAppPlugin
 	
@@ -24,8 +24,8 @@ class AFXAppPlugin(AFXPlugin):
 		runs this plugin.
 		"""
 
-		import os 					# for popen()
-		from AFXConfig import conf 	# for the afxexec bin_name
+		import os 						# for popen()
+		from AFX.AFXConfig import conf 	# for the afxexec bin_name
 
 		# build the os.popen() command string.
 		# 	the process is launched by the exec_bin (afxexec)

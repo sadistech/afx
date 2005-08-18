@@ -68,7 +68,7 @@ class AFXView(gtk.DrawingArea):
 		"""
 		executes the currently selected module
 		"""
-		self.get_module(self.selection).run()
+		self.get_module(self.selection).call()
 		
 	def get_module(self, index):
 		"""

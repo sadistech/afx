@@ -24,6 +24,7 @@ def load_plugins():
 	load_plugin("nes")
 	load_plugin("snes")
 	load_plugin("mame")
+	load_plugin("genesis")
 	load_plugin("exit")
 
 

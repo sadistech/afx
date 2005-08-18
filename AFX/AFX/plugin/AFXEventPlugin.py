@@ -1,5 +1,5 @@
 from AFXPlugin import *
-from AFXEvent import *
+from AFX.AFXEvent import *
 
 class AFXEventPlugin(AFXPlugin):
 	"""

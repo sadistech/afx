@@ -1,6 +1,5 @@
-from AFXApplication import *
+from AFXAppPlugin import *
 from AFXWindowedPlugin import *
-import AFXRuntime
 import os
 import AFX
 
@@ -8,11 +7,11 @@ import pygtk
 import gtk
 
 
-class AFXFileApplication(AFXApplication, AFXWindowedPlugin):
+class AFXFileAppPlugin(AFXAppPlugin, AFXWindowedPlugin):
 	"""
-	AFXFileApplication
+	AFXFileAppPlugin
 	
-	an AFXApplication that passes a file to the commandline.
+	an AFXAppPlugin that passes a file to the commandline.
 	Also creates a filebrowser for accessing the files to pass to
 		the program...
 
@@ -24,7 +23,7 @@ class AFXFileApplication(AFXApplication, AFXWindowedPlugin):
 	dir_path = ""		# path to the starting directory for the filebrowser
 	dir_list = list()	# cached list of the directory's contents
 	filename = ""		# the filename of the file to be launched...
-	run = AFXWindowedPlugin.run
+	call = AFXWindowedPlugin.call
 	
 	def init_window(self):
 		self.window = AFX.AFXWindow(gtk.WINDOW_TOPLEVEL)
@@ -86,7 +85,7 @@ class AFXFileApplication(AFXApplication, AFXWindowedPlugin):
 
 		print "rom: %s" % self.filename
 
-		AFXRuntime.run_plugin(self)
+		self.launch_app()
 
 	def get_exec(self):
 		return "%s %s \"%s/%s\"" % (self.exec_path, self.exec_opts, self.dir_path, self.filename)
