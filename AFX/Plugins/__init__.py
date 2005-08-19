@@ -39,6 +39,18 @@ def get_plugin(index):
 	"""
 	return plugin_list[index]
 
+def get_typed_plugins(type):
+	"""
+	returns a list of all plugins of type 'type' from plugin_list
+	"""
+	
+	l = []
+	for p in plugin_list:
+		if (isinstance(p, type)):
+			l.append(p)
+
+	return l
+
 # some extra text-based functions...
 
 def print_plugins():

@@ -55,7 +55,7 @@ class App:
 
 		loading_window.update_status("Initializing main view...")
 
-		self.main_window.plugin_view = AFXView(Plugins.plugin_list)
+		self.main_window.plugin_view = AFXView(Plugins)
 		self.main_window.add(self.main_window.plugin_view)
 		self.main_window.plugin_view.show()
 

@@ -18,7 +18,7 @@ class AFXFileAppPlugin(AFXAppPlugin, AFXWindowedPlugin):
 	TODO:
 		Add exit button to window...
 		add browsing capability (so you can sort files into folders)
-		add themability (colors for the listbox, etc)
+		add themability (colors for the listbox, etc)?
 	"""
 	dir_path = ""		# path to the starting directory for the filebrowser
 	dir_list = list()	# cached list of the directory's contents

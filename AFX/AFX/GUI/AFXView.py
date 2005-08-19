@@ -1,23 +1,24 @@
 import pygtk
 import gtk
 import pango
+from AFX.plugin.AFXVisualPlugin import *
 
 class AFXView(gtk.DrawingArea):
-	module_list = []
+	plugin_manager = None
 	images = []
 	selection = 0 # the currently selected item
 
-	def __init__(self, module_list):
+	def __init__(self, plugin_manager):
 		"""
-		initializes the AFXView with a module_list (from the Modules module)
+		initializes the AFXView with a plugin_manager (from the Modules module)
 		"""
 
 		gtk.DrawingArea.__init__(self)
 		self.images = []
-		self.module_list = module_list
+		self.plugin_manager = plugin_manager
 
 		# set up the images
-		for m in module_list:
+		for m in plugin_manager.get_typed_plugins(AFXVisualPlugin):
 			i = gtk.Image()
 			i.set_from_file("icons/%s" % m.icon)
 			self.images.append(i)
@@ -66,18 +67,18 @@ class AFXView(gtk.DrawingArea):
 
 	def run_selected(self):
 		"""
-		executes the currently selected module
+		executes the currently selected plugin
 		"""
-		self.get_module(self.selection).call()
+		self.get_plugin(self.selection).call()
 		
-	def get_module(self, index):
+	def get_plugin(self, index):
 		"""
-		returns the module with index
+		returns the visual plugin with index
 		"""
-		#if (index < 0):
-		#	return self.module_list[-(index % len(self.module_list))]
-		#else:
-		return self.module_list[index % len(self.module_list)]
+		return self.plugin_manager.get_typed_plugins(AFXVisualPlugin)[index % self.get_plugin_count()]
+
+	def get_plugin_count(self):
+		return len(self.plugin_manager.get_typed_plugins(AFXVisualPlugin))
 
 	def get_image(self, index):
 		"""
@@ -152,7 +153,7 @@ class AFXView(gtk.DrawingArea):
 		
 		# draw the selection's long_name
 		l = pango.Layout(self.get_pango_context())
-		l.set_markup("<span size='36000' weight='ultrabold'>%s</span>" % self.get_module(self.selection).long_name)
+		l.set_markup("<span size='36000' weight='ultrabold'>%s</span>" % self.get_plugin(self.selection).long_name)
 		
 		# set the foreground colour to white...
 		gc.set_rgb_fg_color(gtk.gdk.Color(65535, 65535, 65535))
@@ -164,7 +165,7 @@ class AFXView(gtk.DrawingArea):
 
 		# draw the description!
 		l = pango.Layout(self.get_pango_context())
-		l.set_markup("<span size='24000' style='italic'>%s</span>" % self.get_module(self.selection).description)
+		l.set_markup("<span size='24000' style='italic'>%s</span>" % self.get_plugin(self.selection).description)
 		l.set_wrap(pango.WRAP_WORD) 	# set it to wrap on word boundries
 		l.set_width(w * 500) 				# set the wrap-width to half the window's width
 		

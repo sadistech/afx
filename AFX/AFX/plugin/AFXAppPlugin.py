@@ -10,7 +10,10 @@ class AFXAppPlugin(AFXVisualPlugin):
 	
 	exec_path = ""	# the path of the executable
 	exec_opts = ""	# any options that are going to be passed to the executable
-	
+
+	def call(self, widget=None, data=None):
+		self.launch_app()
+
 	def get_exec(self):
 		"""
 		returns the string needed to execute this application
